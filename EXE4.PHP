@@ -6,9 +6,10 @@
 </head>
   <body>
     <?php
+        //Declarar variáveis
       $ texto = "Hello World";
       $ num = 5;
-        //Escrever variáaveis
+        //Escrever variáveis
       echo $ texto . "<br>";
       echo $ num . "<br>";
     ?>
