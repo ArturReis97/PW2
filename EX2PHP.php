@@ -10,9 +10,9 @@
       $cor="azul";
       // Escrever valor de variável
       // Só aceitou da fomra que criei a variável
-      echo " A cor é".$cor."<br>";
-      echo " A cor é".$Cor."<br>";
-      echo " A cor é".$COR."<br>";
+      echo " A cor é ".$cor."<br>";
+      echo " A cor é ".$Cor."<br>";
+      echo " A cor é ".$COR."<br>";
     ?>
   </body>
 </html>
