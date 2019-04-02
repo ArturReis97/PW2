@@ -10,9 +10,11 @@
 </head>
 <body>
     <?php
-    $x=10;
-    $y=7;
-    echo $x . "+" . $y . "=" . $x + $y;
+    $val = 8;
+    echo "Value is now" .$val ."<br>";
+    echo "Add 2. Value is now" . $val += 2 . "<br>";
+    echo ""
+    
 
     ?>
 </body>
