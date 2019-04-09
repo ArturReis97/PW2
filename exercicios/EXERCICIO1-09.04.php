@@ -10,15 +10,19 @@
 </head>
 <body>
     <?php
-    date('F', time());
-    if ( $date == Agosto )
-     {
-        echo "Está mesmo calor!" "<br>";
-    }
+    
+    $date = date('F', time()). "<br>";
+      echo $date;
+
+       if ( $date == "Agosto" )
+       {
+        echo "Está mesmo calor!";
+       }
     else
-    {
-        echo "Não está tanto calor como em Agosto"
-    }
+       {
+        echo "Não está tanto calor como em Agosto";
+       }
+
     ?>
 </body>
 </html>
