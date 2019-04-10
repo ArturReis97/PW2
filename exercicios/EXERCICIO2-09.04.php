@@ -7,12 +7,14 @@
   <body>
 
 	<?php
-    $i = abc;
-     while (i <= i){
+
+     $i = abc;
+
+       while ($i <= 9)
+       {
          $i++;
-         "<br>";
-    }
-     ?>
+       }
+    ?>
 
   </body>	
 </html>
