@@ -7,14 +7,30 @@
   <body>
 
 	<?php
-      //NUMEROS PRIMOS ATE 200
-      $limite = 200;
-      $nprimos = 1;
-      for (i = 1; i<$nprimos; i++){
-          $nprimos = $i % $nprimos != 0;
-          echo "os numeros primos são: $nprimos"
-      }
+      //NUMEROS PRIMOS ATE 300
+      function getPrimos($num1)
+      {
+
+      for ($i = 1; $i <= $num1 ; $i++)
+      {
+           $divisao = 0;
+
+      for ($j = $i ; $j >= 1 ; $j--)
+      {
+          if (($i % $j) == 0)
+          {
+            $divisao++;
+          }
+     }
+          if ($divisao == 2)
+          {
+              echo $i . ', ';
+          }
+        }  
+     }
+     echo getPrimos(300);
     ?>
 
   </body>	
 </html>
+
