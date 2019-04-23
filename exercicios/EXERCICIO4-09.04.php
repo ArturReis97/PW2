@@ -8,13 +8,13 @@
    <?php
 
   $html = '<table border=1>';
-      for($row=1; $row <= 7; $row++){
+      for($linhas=1; $linhas <= 7; $linhas++){
 
              $html .= '<tr>';
 
         for($col=1; $col <= 7; $col++){
 
-             $html .= '<td>'.($row*$col).'</td>';           
+             $html .= '<td>'.($linhas*$col).'</td>';           
           }
           $html .= '</tr>';
       }

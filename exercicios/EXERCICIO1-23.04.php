@@ -9,12 +9,12 @@
 	<?php
       // DEFENIR A FUNÇÃO
       function getBmi($height, $weight){
-        $bmi = $height / $weight;
-        echo "Your body fat is $height and $weight : $bmi ";
+        $bmi = $height / ($weight^2);
+        echo "Your body fat is: $bmi ";
       }
       //CHAMAR A FUNÇÃO
-      getBmi(85, 174)
-      
+      getBmi(85, 1.74)
+
     ?>
            
   </body>	
