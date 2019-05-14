@@ -1,9 +1,3 @@
-<html>
-  <head>
-    <title>Soma em PHP</title>
-  </head>
-
-<body>
 
 <?php
 function calculo($valor1, $valor2)
@@ -11,12 +5,9 @@ function calculo($valor1, $valor2)
   return $valor1+$valor2;
 }
 
-$v1=$_POST['valor1'];
-$v2=$_POST['valor2'];
+$Valores = json_decode(file_get_contents('php://input'));
 
-$soma=calculo($v1, $v2);
-   echo"A soma é:$soma";
+$soma = calculo($Valores -> v1, $Valores -> v2);
+echo Json_encode($soma);
 
 ?>
-</body>
-</html>
