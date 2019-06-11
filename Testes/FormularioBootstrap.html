@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+   <head>
+      <title>FORMULARIO BOOTSTRAP</title>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="main.css">
+   </head>
+
+   <body>
+      <form action="" method="post">
+         <label for="Pesquisa">Pesquisa</label>
+         <input type="text" name="Pesquisa" id="Pesquisa" class="form-control"> 
+         <button type="submit" class="btn btn-outline-success" value="Submmit" name="pesquisa">Submit</button>
+      </form>
+      <form action="" method="post" class="main-form needs-validation" novalidate>
+         <div class="row">
+            <div class="col">
+               <div class="form-group">
+                  <label for="PrimeiroNome">Primeiro Nome</label>
+                  <input type ="text" name="PrimeiroNome" id="PrimeiroNome" class="form-control" required>
+                  <div class="invalid-feedback">Please enter your First Name!</div>
+               </div>
+            </div>
+            <div class="col">
+               <div class="form-group">
+                  <label for="UltimoNome">Ultimo Nome</label>
+                  <input type="text" name="UltimoNome" id="UltimoNome" class="form-control" required>
+                  <small class="form-text text-muted">
+                  This should be your last name.
+                  </small>
+               </div>
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="AnoDeNascimento">Data de Nascimento</label>
+            <input type="text" name="AnoDeNascimento" id="AnoDeNascimento" class="form-control" maxlength="4" required>
+         </div>
+         <div class="form-group">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+               <option value="male">Male</option>
+               <option value="female">Female</option>
+            </select>
+         </div>
+         <button type="submit" class="btn btn-outline-success" value="Submmit" name="Inserir">Submit</button>
+      </form>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+         crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
+         crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+         crossorigin="anonymous"></script>
+      <script>
+
+         //Função criada para apenas vaildar os campos quando tem algo inserido.
+         var form = document.querySelector('.needs-validation');
+         
+         form.addEventListener('submit', function(event) {
+         	if (form.checkValidity() === false) {
+         		event.preventDefault();
+         		event.stopPropagation();
+         	}
+         	form.classList.add('was-validated');
+         })
+      </script>
+   </body>
+</html>
