@@ -10,12 +10,18 @@ if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
     Eliminar($id);
 }
-if (isset($_POST['pesquisa'])) {
-    Pesquisar();
+if (isset($_POST['Pesquisar'])) {
+    $Pesquisa = $_POST['Pesquisar'];
+    $sqlResult = "SELECT * FROM `pessoas` WHERE CONCAT(`id`, `UltimoNome`, `AnoDeNascimento`, `PrimeiroNome`) LIKE'%".$Pesquisa."%'";
+   // $sqlResult = "SELECT * FROM pessoas WHERE PrimeiroNome = 'joao'";
+    $resultado_pesquisa = FiltrarPesquisa($sqlResult);
+}
+else {
+    $sqlResult = "SELECT * FROM pessoas";
+    $resultado_pesquisa = FiltrarPesquisa($sqlResult);
 }
 
 //Ligação á base de dados ($link) se a ligação nao for conectada com exito da "erro".
-
 function Ligar()
 {
     $link = mysqli_connect("localhost", "root", "", "pw2");
@@ -28,22 +34,19 @@ function Ligar()
 }
 
 //Fecha a ligação á base de dados (que em cada função temos sempre de abrir, criar a função e depois fechar a ligação á base de dados).
-
 function Desligar()
 {
     $link = Ligar();
     mysqli_close($link);
 }
 
-function Listar()
+// Vai apresentar apenas os dados inseridos na pesquisa
+function FiltrarPesquisa($sqlResult)
 {
-    //************ Recebe todos os registos da BD ******************
-    global $sqlResult;
-    
     $link = Ligar();
-    
-    $sql       = "SELECT * FROM pessoas";
-    $sqlResult = mysqli_query($link, $sql);
+      
+      $filtro_resultado = mysqli_query($link, $sqlResult);
+      return $filtro_resultado;
     
     Desligar();
 }
@@ -56,7 +59,7 @@ function Eliminar($id)
     
     if (mysqli_query($link, $sql)) {
         echo "Eliminado!";
-        Listar();
+        //Listar();
     } else {
         echo "Erro ao eliminar";
     }
@@ -81,32 +84,7 @@ function InserirDados()
     Desligar();
 }
 
-function PesquisarLista($queryPesquisa)
-{
-    global $sqlResult;
-    
-    $link = Ligar();
-    
-    $row       = mysqli_query($link, $queryPesquisa);
-    $sqlResult = mysqli_fetch_assoc($row);
-    
-    Desligar();
-}
 
-function Pesquisar()
-{
-    $link = Ligar();
-    
-    $pesquisa      = mysqli_real_escape_string($link, $_POST['Pesquisa']);
-    $queryPesquisa = "SELECT * FROM pessoas WHERE PrimeiroNome='$pesquisa' OR UltimoNome='$pesquisa'";
-    
-    PesquisarLista($queryPesquisa);
-    
-    Desligar();
-}
-
-//Fechar connect com o sql para entrar com o html (estilo e tabelas)
-listar();
 ?>
 
 <!--ACABA AS FUNÇÕES, ENTRA A PARTA DA TABELA DATABASE E DO BOOTSTRAP DO FORM !-->
@@ -149,19 +127,12 @@ listar();
             <label for="AnoDeNascimento">Data de Nascimento</label>
             <input type="text" name="AnoDeNascimento" id="AnoDeNascimento" class="form-control" maxlength="4" required>
          </div>
-         <div class="form-group">
-            <label for="gender">Género</label>
-            <select name="gender" id="gender">
-               <option value="male">Masculino</option>
-               <option value="female">Feminino</option>
-            </select>
-         </div>
          <button type="submit" class="btn btn-outline-success" value="Submmit" name="Inserir">Submit</button>
       </form>
 
       <form action="luso.php" method="post">
          <label for="Pesquisa">Pesquisa :</label>
-         <input type="text" name="Pesquisa" id="Pesquisa" class="form-control"><br>
+         <input type="text" name="Pesquisar" class="form-control"><br>
          <button type="submit" class="btn btn-outline-success" value="Submmit" name="pesquisa">Submit</button>
       </form>
 
@@ -194,17 +165,18 @@ listar();
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Date of birth</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Primeiro Nome</th>
+          <th scope="col">Último Nome</th>
+          <th scope="col">Ano De Nascimento</th>
+          <th scope="col">Eliminar</th>
+          <th scope="col">Alterar</th>
         </tr>
       </thead>
 
          <!-- mostrar dados inseridos na database !-->
 
          <?php
-while ($listaPessoas = mysqli_fetch_assoc($sqlResult)) {
+while ($listaPessoas = mysqli_fetch_assoc($resultado_pesquisa)) {
     echo "<tr>";
     echo "<td>";
     echo $listaPessoas['id'];
@@ -220,6 +192,9 @@ while ($listaPessoas = mysqli_fetch_assoc($sqlResult)) {
     echo "</td>";
     echo "<td>";
     echo "<span class='input-group-addon'><a href='luso.php?eliminar=" . $listaPessoas['id'] . "'>Eliminar</a></span>";
+    echo "</td>";
+    echo "<td>";
+    echo "<span class='input-group-addon'><a href='FormAlterar.php?id=" . $listaPessoas['id'] . "'>Alterar</a></span>";
     echo "</td>";
     echo "</tr>";
 }
