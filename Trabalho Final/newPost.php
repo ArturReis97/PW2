@@ -65,9 +65,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Projeto Final</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style type="text/css" href="STYLE.css">
+    <link rel="stylesheet" type="text/css" href="STYLE.css">
+    <style>
         body{ font: 14px sans-serif; text-align: center; }
-        </style>
+    </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -96,17 +97,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       </div>
     </nav>
 
-    <form action="" method="post">
+    <form action="" method="post" class="centrarForm">
       <div class="form-group row">
-        <label for="inputPassword" placeholder="title" class="col-sm-2 col-form-label">Title</label>
+        <label for="inputPassword" placeholder="title" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-          <input type="text-box" placeholder="text" class="form-control" name="textTitle" id="textPost">
+          <input type="text-box" placeholder="title" class="form-control centrarPost" name="textTitle" id="textPost">
         </div>
       </div>
       <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 col-form-label">Text</label>
+        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-          <textarea class="form-control" name="textPost" rows="10" id="textPost" placeholder="text"></textarea><br>
+          <textarea class="form-control" style=" width:50% ; margin: auto" name="textPost" rows="10" id="textPost" placeholder="text"></textarea><br>
           <button class="btn btn-outline-success my-2 my-sm-0 btn-lg" type="submit">Submit</button>
         </div>
       </div>

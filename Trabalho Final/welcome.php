@@ -56,7 +56,7 @@
                   if($result->num_rows > 0){
                   
                   while($row = $result->fetch_array()){
-                  echo "<h1 class='display-5'>" . $row['title'] . "</h1>";
+                  echo "<h4 class='display-5'>" . $row['title'] . "</h1>";
                   echo "<p class='lead'>" . $row['text'] . "</td>";
                   echo "<hr>";
                   echo "<br>";

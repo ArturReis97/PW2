@@ -32,6 +32,15 @@
 	padding:10;
 }
 
+.centrarPost{
+	width:50%;
+	 margin: auto;
+	 margin-top: 5%;
+}
+
+.centrarForm{
+	margin:auto;
+}
 /* like button 
 .posts-wrapper {
   width: 50%;
